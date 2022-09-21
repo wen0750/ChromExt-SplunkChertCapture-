@@ -1,8 +1,8 @@
-Element Screenshot
+Splunk Chert Capture
 ===============
 
-This is a Chrome extension which will take screenshot of any HTML element in a webpage.
+This is a Chrome extension which will take screenshot of all chert in Splunk webpage.
 
-Click the camera icon in the URL bar, hover over the element you want to capture and click to take the screenshot.
+Click the Splunk icon in the URL bar, select the output method by tab page or save as png then it will take the screenshot automatically.
 
-This extension was originally developed by Robinson and available [here](https://github.com/tlrobinson/element-capture), which is not maintained anymore. My version is a bug fixed version of the original.
+This extension was originally developed by Wilson WAN, which may not maintaine anymore. If you got any bug you can report to me by github or email: wen@wen0750.club.
