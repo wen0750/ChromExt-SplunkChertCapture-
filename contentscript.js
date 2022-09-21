@@ -20,6 +20,7 @@ function start(saveMethod) {
         let selectedElement = document.querySelectorAll(".panel-element-row");
         window.scrollTo(0,0);
         var BORDER_THICKNESS = 4;
+
         for (let i = 0; i < selectedElement.length; i++) {
             var overlay, outline;
             if (!overlay) {
@@ -40,14 +41,21 @@ function start(saveMethod) {
             if (!overlay.parentNode) {
                 document.body.appendChild(overlay);
                 var element, dimensions = {};
-                mousemove(selectedElement[i])
-                mouseup()
+                selecteElement(selectedElement[i])
+                toCapture()
             }
             await sleep(1000);
-            window.scrollTo(window.scrollX, window.scrollY+selectedElement[i].offsetHeight);
+            //check next element position
+            if (i+1 <= selectedElement.length) {
+              if (selectedElement[i].getBoundingClientRect()["y"] != selectedElement[i+1].getBoundingClientRect()["y"]) {
+                window.scrollTo(window.scrollX, window.scrollY+selectedElement[i].offsetHeight);
+              }
+            }
+
+
         }
         console.log('Done');
-        function mousemove(e) {
+        function selecteElement(e) {
             if (element !== e) {
                 element = e;
                 dimensions.top = -window.scrollY;
@@ -70,7 +78,7 @@ function start(saveMethod) {
                 outline.style.height = dimensions.height + "px";
             }
         }
-        function mouseup() {
+        function toCapture() {
             document.body.removeChild(overlay);
             dimensions.devicePixelRatio = window.devicePixelRatio;
             setTimeout(function() { send({ type: "up", dimensions: dimensions }); }, 100);
